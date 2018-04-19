@@ -20,7 +20,6 @@ let LinkedList = function() {
     } else {
       if (this.head.next === null && this.tail) {
         this.head.next = this.tail;
-        console.log(this)
       } 
       this.tail.next = Node(value);
       this.tail = this.tail.next
