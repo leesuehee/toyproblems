@@ -9,18 +9,19 @@ var Tree = function(value) {
   };
   
   newTree.contains = function(target) {
-    // iterate trough the parent's children and their children/s children
+    let output = false;
 
-    let recurse = function(node) {
-      for (let i = 0; i < node.children.length; i++) {
-        if (node.children[i].value === target) {
-          return true;
-        } 
-        recurse(node.children[i]);
-      };
-    }
-    recurse(target);
-    return false;
+    var recurse = function(node) {
+      if (node.value === target) {
+        output = true;
+      } else {
+        for (let i = 0; i < node.children.length; i++) {
+          recurse(node.children[i]);
+        };       
+      }; 
+    };
+    recurse(this);
+    return output;
   };
 
   return newTree;
@@ -29,5 +30,5 @@ var Tree = function(value) {
 
 
 /*
- * Complexity: What is the time complexity of the above functions?
+ * N 
  */
