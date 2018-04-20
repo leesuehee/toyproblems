@@ -11,11 +11,15 @@ var Tree = function(value) {
   newTree.contains = function(target) {
     // iterate trough the parent's children and their children/s children
 
-    for (let i = 0; i < this.children.length; i++) {
-      if (this.children[i].value === target) {
-        return true;
+    let recurse = function(node) {
+      for (let i = 0; i < node.children.length; i++) {
+        if (node.children[i].value === target) {
+          return true;
+        } 
+        recurse(node.children[i]);
       };
-    };
+    }
+    recurse(target);
     return false;
   };
 
