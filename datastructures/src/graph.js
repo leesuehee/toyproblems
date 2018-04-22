@@ -15,6 +15,7 @@ Graph.prototype.addNode = function(node) {
 // Return a boolean value indicating if the value passed to contains is represented in the graph.
 Graph.prototype.contains = function(node) {
   var storedNodes = this.store.nodes;
+  
   for(let i = 0; i < storedNodes.length; i++) {
     if (storedNodes[i] === node) return true;
   }
@@ -23,6 +24,10 @@ Graph.prototype.contains = function(node) {
 
 // Removes a node from the graph.
 Graph.prototype.removeNode = function(node) {
+  var storedNodes = this.store.nodes;
+  var index = storedNodes.indexOf(node);
+
+  storedNodes.splice(index,1);
 };
 
 // Returns a boolean indicating whether two specified nodes are connected.  Pass in the values contained in each of the two nodes.
