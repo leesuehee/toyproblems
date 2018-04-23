@@ -1,53 +1,46 @@
 
-
-// Instantiate a new graph
 var Graph = function(value) {
-  this.store = {
-    nodes: []
-  };
+  this.store = {};
 };
 
-// Add a node to the graph, passing in the node's value.
 Graph.prototype.addNode = function(node) {
-  this.store.nodes.push(node);
+  this.store[node] = [];
 };
 
-// Return a boolean value indicating if the value passed to contains is represented in the graph.
 Graph.prototype.contains = function(node) {
-  var storedNodes = this.store.nodes;
-  
-  for(let i = 0; i < storedNodes.length; i++) {
-    if (storedNodes[i] === node) return true;
-  }
-  return false;
+  return (this.store[node]!==undefined);
 };
 
-// Removes a node from the graph.
 Graph.prototype.removeNode = function(node) {
-  var storedNodes = this.store.nodes;
-  var index = storedNodes.indexOf(node);
-
-  storedNodes.splice(index,1);
+  for (let nodeVal in this.store) {
+    if (this.store[nodeVal].indexOf(node) > -1) {
+      let index = this.store[nodeVal].indexOf(node);
+      this.store[nodeVal].splice(index,1);
+    };
+  };
+  delete this.store[node];
 };
 
-// Returns a boolean indicating whether two specified nodes are connected.  Pass in the values contained in each of the two nodes.
 Graph.prototype.hasEdge = function(fromNode, toNode) {
+  return (this.store[fromNode].indexOf(toNode) > -1);
 };
 
-// Connects two nodes in a graph by adding an edge between them.
 Graph.prototype.addEdge = function(fromNode, toNode) {
+  this.store[fromNode].push(toNode);
+  this.store[toNode].push(fromNode);
 };
 
-// Remove an edge between any two specified (by value) nodes.
 Graph.prototype.removeEdge = function(fromNode, toNode) {
+  let indexFrom = this.store[fromNode].indexOf(toNode);
+  let indexTo = this.store[toNode].indexOf(fromNode);
+  this.store[fromNode].splice(indexFrom,1);
+  this.store[toNode].splice(indexTo,1);
 };
 
-// Pass in a callback which will be executed on each node of the graph.
 Graph.prototype.forEachNode = function(cb) {
+  for (let nodeVal in this.store) {
+    cb(nodeVal);
+  }
 };
-
-/*
- * Complexity: What is the time complexity of the above functions?
- */
 
 
