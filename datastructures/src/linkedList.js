@@ -1,7 +1,6 @@
 
 let Node = function(value) {
   let content = {};
-
   content.value = value;
   content.next = null;
 
@@ -10,7 +9,6 @@ let Node = function(value) {
 
 let LinkedList = function() {
   let list = {};
-
   list.head = null;
   list.tail = null;
 
@@ -28,28 +26,24 @@ let LinkedList = function() {
 
   list.removeHead = function(value) {
     let holdHead = this.head.value;
-
     this.head = this.head.next;
+    
     return holdHead;
   };
 
   list.contains = function(target) {  
-  let temp = list;
+    let temp = list;
 
-  let checkNext = function(temp) {
-    if (temp.head.value === target) {
-      return true; 
-    } else {
-      if (temp.head.next) {
-        checkNext(temp.head.next);
-      } else {
-        return false;
+    let checkNext = function(node) {
+      if (node.value === target) return true; 
+      else { 
+        if (!node.next) return false;
+        return checkNext(node.next);
       };
     };
-  };
-
-  return checkNext(this);
-  };
+    
+    return (checkNext(this.head))? true: false;
+  }
 
   return list;
 };
