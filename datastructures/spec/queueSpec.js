@@ -5,13 +5,6 @@ describe('queue', function() {
     queue = new Queue();
   });
 
-  it('should the methods "enqueue", "dequeue", "size", and "contains"', function() {
-    expect(queue.enqueue).to.be.a('function');
-    expect(queue.dequeue).to.be.a('function');
-    expect(queue.contains).to.be.a('function');
-    expect(queue.size).to.be.a('function');
-  });
-
   it('should add values to the end of the queue', function(){
     queue.enqueue(5);
     expect(queue.size).to.equal(1);
@@ -23,8 +16,10 @@ describe('queue', function() {
   it('should remove values from the front queue', function(){
     queue.enqueue(5);
     queue.enqueue(2);
-    expect(queue.size).to.equal(2);
+    queue.enqueue(12);
+    queue.enqueue(1);
     expect(queue.dequeue()).to.equal(5);
+    expect(queue.dequeue()).to.equal(2);
   });
 
   it('should return a boolean whether input value is in the queue', function(){
