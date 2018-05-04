@@ -1,15 +1,17 @@
-let largestContSum = function(arr) {
+let largestSum = function(array) {
   let max = 0;
+  let update = 0; 
 
-  for(let i = 0; i < arr.length; i++) {
-    sum = arr[i];
-    
-    for (let j = i+1; j < arr.length-1; j++) {
-      sum += arr[j];
-    };
-    if (sum > max) max = sum;
-  };
-  return max; 
+  for(let num of array) {
+    update += num;
+    if (update < 0) update = 0;
+    if (max < update) max = update; 
+  }
+
+  return max;
 };
 
-// largestContSum([-2,-3,4,-1,-2,1,5,-3])
+// console.log(largestSum([-2,-3,4,-1,-2,1,5,-3]))
+
+
+
