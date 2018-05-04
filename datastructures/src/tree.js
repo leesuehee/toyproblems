@@ -29,6 +29,3 @@ var Tree = function(value) {
 
 
 
-/*
- * N 
- */
