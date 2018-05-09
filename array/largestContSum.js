@@ -2,8 +2,8 @@ let largestSum = function(array) {
   let max = 0;
   let update = 0; 
 
-  for(let num of array) {
-    update += num;
+  for(let num of array) { 
+    update += num; 
     if (update < 0) update = 0;
     if (max < update) max = update; 
   }

@@ -52,4 +52,4 @@ var fn = (value, depth) => {
   return depth === 1
 };
 
-
+console.log(root1.DFSelect(fn))

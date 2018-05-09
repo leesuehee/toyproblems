@@ -9,6 +9,14 @@ Tree.prototype.addChild = function(value) {
   return child;
 };
 
+Tree.prototype.map = function(cb) {
+  let root = new Tree(cb(this.value));
+
+  let recurse = function(node) {
+    
+  }
+};
+
 Tree.prototype.mapInPlace = function(cb) {
 
   let recurse = function(node) {
