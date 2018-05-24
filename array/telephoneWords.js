@@ -27,7 +27,6 @@ let telephoneWords = function(str) {
     current += reference.copy[i];
   };
 
-
 };
   
   
